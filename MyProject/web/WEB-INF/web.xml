@@ -4,9 +4,17 @@
         <servlet-name>GroupsController</servlet-name>
         <servlet-class>Controller.GroupsController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Activity</servlet-name>
+        <servlet-class>Controller.ActivityController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GroupsController</servlet-name>
         <url-pattern>/group</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Activity</servlet-name>
+        <url-pattern>/attendance</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
