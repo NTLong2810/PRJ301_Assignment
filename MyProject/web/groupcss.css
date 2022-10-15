@@ -6,28 +6,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Created on : Oct 11, 2022, 3:40:37 PM
     Author     : DELL
 */
-caption{
-    color: gray;
-    font-size: 25px;
-    font-weight: bold;
-    text-align: left;
-    background: no-repeat top left;
-    padding: 10px;
-    margin-bottom: 2px;
-}
 body {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 13px;
     line-height: 1.42857143;
     color: #333;
-    background-color: #fff;
 }
 body{
     line-height: 22px;
 }
 table {
     font-size: 15px;
-    background-color: #fff;
     border-collapse: collapse;
     width: 100%;
 }
@@ -54,18 +43,3 @@ tbody th {
     text-align:left;
     padding: 2px;
 }
-a {
-    color: Blue;
-    text-decoration: none;
-}
-
-    a:hover {
-        color: #f4a460;
-        text-decoration: underline;
-    }
-    #design{
-        vertical-align: top;
-    }
-    b{
-        font-weight: bold;
-    }
