@@ -2,11 +2,11 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
         <servlet-name>GroupsController</servlet-name>
-        <servlet-class>Controller.GroupsController</servlet-class>
+        <servlet-class>Controller.StatusAttendController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Activity</servlet-name>
-        <servlet-class>Controller.ActivityController</servlet-class>
+        <servlet-class>Controller.TakeAttendController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>GroupsController</servlet-name>

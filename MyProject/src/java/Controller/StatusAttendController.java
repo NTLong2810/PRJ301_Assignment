@@ -14,7 +14,7 @@ import java.io.IOException;
  *
  * @author DELL
  */
-public class GroupsController extends HttpServlet{
+public class StatusAttendController extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

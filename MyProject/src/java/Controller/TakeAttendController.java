@@ -14,7 +14,7 @@ import java.io.IOException;
  *
  * @author DELL
  */
-public class ActivityController extends HttpServlet{
+public class TakeAttendController extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
