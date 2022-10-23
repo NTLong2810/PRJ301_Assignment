@@ -1,20 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-        <servlet-name>GroupsController</servlet-name>
-        <servlet-class>Controller.StatusAttendController</servlet-class>
+        <servlet-name>TimetableController</servlet-name>
+        <servlet-class>Controller.TimeTableController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Activity</servlet-name>
+        <servlet-name>TakeAttendController</servlet-name>
         <servlet-class>Controller.TakeAttendController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>StatusAttendController</servlet-name>
+        <servlet-class>Controller.StatusAttendController</servlet-class>
+    </servlet>
     <servlet-mapping>
-        <servlet-name>GroupsController</servlet-name>
-        <url-pattern>/group</url-pattern>
+        <servlet-name>TimetableController</servlet-name>
+        <url-pattern>/lecturer/timetable</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Activity</servlet-name>
-        <url-pattern>/attendance</url-pattern>
+        <servlet-name>TakeAttendController</servlet-name>
+        <url-pattern>/lecturer/takeatt</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StatusAttendController</servlet-name>
+        <url-pattern>/lecturer/status</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
