@@ -164,7 +164,7 @@ public ArrayList<Session> filter(int lid, Date from, Date to) {
                     + "	,r.rid,r.rname\n"
                     + "	,t.tid,t.[description] tdescription\n"
                     + "	,l.lid,l.lname\n"
-                    + "	,sub.subid,sub.subname\n"
+                    + "	,sub.subid,a.record_time,sub.subname\n"
                     + "	,s.stdid,s.stdname\n"
                     + "	,ISNULL(a.present,0) present, ISNULL(a.[description],'') [description]\n"
                     + "		FROM [Session] ses\n"
@@ -223,6 +223,7 @@ public ArrayList<Session> filter(int lid, Date from, Date to) {
                 a.setSession(ses);
                 a.setPresent(rs.getBoolean("present"));
                 a.setDescription(rs.getString("description"));
+                a.setRecord_time(rs.getTimestamp("record_time"));
                 ses.getAttendances().add(a);
             }
             return ses;
