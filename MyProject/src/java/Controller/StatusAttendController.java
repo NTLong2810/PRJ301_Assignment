@@ -4,25 +4,43 @@
  */
 package Controller;
 
+import dal.GroupDBContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import model.Group;
+import model.Session;
+import model.Student;
 
 /**
  *
  * @author DELL
  */
 public class StatusAttendController extends HttpServlet{
+     protected void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+          int groupid = Integer.parseInt(req.getParameter("gid"));
+        int lid = Integer.parseInt(req.getParameter("lid"));
+        int subid = Integer.parseInt(req.getParameter("subid"));
+        GroupDBContext groupDB = new GroupDBContext();
+        Group group = groupDB.get(groupid, lid, subid);
+        ArrayList<Student> liststudent = group.getStudents();
+        ArrayList<Session> listses = group.getSessions();
+        req.setAttribute("group", group);
+        req.getRequestDispatcher("../view/lecturer/statusattend.jsp").forward(req, resp);
+    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        processRequest(req,resp);
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.sendRedirect("groups.html");
+         processRequest(req,resp);
+       
     }
     
 }
