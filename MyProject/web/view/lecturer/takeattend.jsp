@@ -11,25 +11,30 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link rel="stylesheet" href="../css/TakeAttendStyle.css"/>
     </head>
     <body>
-         Take attendance for Group: ${requestScope.ses.group.name} <br/>
+        <a>Take attendance for Group: ${requestScope.ses.group.name} <br/></a>
         Subject: ${requestScope.ses.group.subject.name} <br/>
         Room: ${requestScope.ses.room.name} <br/>
-        Date: ${requestScope.ses.date} - ${requestScope.ses.timeslot.description}<br/>
-        Attended: <span style="color: red;"> ${requestScope.ses.attended?"Yes":"No"} </span>
+        Date: ${requestScope.ses.date}<br/>
+        TimeSlot: ${requestScope.ses.timeslot.description}<br/>
+        <b> Attended:</b> <span style="color: red; font-weight: bold"> ${requestScope.ses.attended?"Yes":"No"} </span>
         <form action="takeatt" method="POST">
             <input type="hidden" name="sesid" value="${param.id}"/>
             <table border="1px">
+                <thead>
                 <tr>
-                    <td>No.</td>
-                    <td>StudentID</td>
-                    <td>Full Name</td>
-                    <td>Present</td>
-                    <td>Absent</td>
-                    <td>Description</td>
-                    <td>Record_time</td>
+                    <th>No.</th>
+                    <th>StudentID</th>
+                    <th>Full Name</th>
+                    <th>Present</th>
+                    <th>Absent</th>
+                    <th>Description</th>
+                    <th>Record_time</th>
                 </tr>
+                </thead>
+                <tbody>
                  <c:forEach items="${requestScope.ses.attendances}" var="a" varStatus="loop">
                  <tr>
                     <td>${loop.index+1}</td>
@@ -53,7 +58,7 @@
                     
                 </c:forEach>
                 
-                
+                </tbody>
             </table>
             <input type="submit" value="Save"/>
         </form>
