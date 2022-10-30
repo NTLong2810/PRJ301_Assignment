@@ -79,5 +79,8 @@
                     </c:forEach>    
                 </tr>   
             </table>
+                <c:forEach  items="${requestScope.group.sessions}" var="ses"  begin="0" end="0">
+                <a style="font-size: 20px" href="timetable?lid=${ses.lecturer.id}">Back</a>
+                     </c:forEach>
     </body>
 </html>

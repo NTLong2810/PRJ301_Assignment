@@ -12,6 +12,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link rel="stylesheet" href="../css/TakeAttendStyle.css"/>
+        <script>
+            function takeattend() {
+            alert('Take Attend Sucessfully');
+            }
+        </script>
     </head>
     <body>
         <a>Take attendance for Group: ${requestScope.ses.group.name} <br/></a>
@@ -60,7 +65,8 @@
                 
                 </tbody>
             </table>
-            <input type="submit" value="Save"/>
+            <input type="submit" value="Save" onclick="takeattend();"/>              
         </form>
+          <a style="font-size: 20px" href="timetable?lid=${requestScope.ses.lecturer.id}">Back</a>
     </body>
 </html>
