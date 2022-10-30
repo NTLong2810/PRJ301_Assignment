@@ -28,8 +28,8 @@
                     <th>Group</th>
                     <th>Student ID</th>
                     <th>Full Name</th>
-                    <c:forEach items="${requestScope.group.sessions}" var="ses">
-                    <th> Session ${ses.index} <br>
+                    <c:forEach items="${requestScope.group.sessions}" var="ses" varStatus="loop">
+                    <th> Session ${loop.index+1} <br>
                            <fmt:formatDate value="${ses.date}" pattern="dd/MM/yyy"/>
                         </th>
                     </c:forEach>
