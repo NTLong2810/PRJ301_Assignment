@@ -33,6 +33,7 @@
                     <th>No.</th>
                     <th>StudentID</th>
                     <th>Full Name</th>
+                    <th>Image</th>
                     <th>Present</th>
                     <th>Absent</th>
                     <th>Description</th>
@@ -47,6 +48,7 @@
                     <input type="hidden" name="stdid" value="${a.student.id}"/>
                     </td>
                     <td>${a.student.name}</td>
+                    <td><img src="../img/depositphotos_64486573-stock-photo-people.jpg" alt="alt" style="height:146px;width:111px;border-width:0px;"/></td>
                     <td><input type="radio"
                                <c:if test="${a.present}">
                                checked="checked"
