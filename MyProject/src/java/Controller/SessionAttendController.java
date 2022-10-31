@@ -4,7 +4,7 @@
  */
 package Controller;
 
-import dal.DetailDBContext;
+import dal.AttendanceDBContext;
 import dal.LecturerDBContext;
 import dal.SessionDBContext;
 import jakarta.servlet.ServletException;
@@ -28,7 +28,7 @@ public class SessionAttendController extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
          int sesid = Integer.parseInt(req.getParameter("id"));
-        DetailDBContext de = new DetailDBContext();
+        AttendanceDBContext de = new AttendanceDBContext();
         ArrayList attlist = de.getAttendance(sesid);
         LecturerDBContext lec = new LecturerDBContext();
         req.setAttribute("attlist", attlist);

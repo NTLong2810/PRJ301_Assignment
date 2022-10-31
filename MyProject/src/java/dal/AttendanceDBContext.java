@@ -18,7 +18,7 @@ import model.Student;
  *
  * @author DELL
  */
-public class DetailDBContext extends DBContext<Attendance>{
+public class AttendanceDBContext extends DBContext<Attendance>{
     public ArrayList<Attendance> getAttendance(int id){
     ArrayList<Attendance> attlist = new ArrayList<>();
      try {
@@ -44,12 +44,12 @@ public class DetailDBContext extends DBContext<Attendance>{
                 attlist.add(att);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(DetailDBContext.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AttendanceDBContext.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
                 connection.close();
             } catch (SQLException ex) {
-                Logger.getLogger(DetailDBContext.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AttendanceDBContext.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         return attlist;

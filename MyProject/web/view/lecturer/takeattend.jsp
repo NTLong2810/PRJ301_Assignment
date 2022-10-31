@@ -31,8 +31,8 @@
                 <thead>
                 <tr>
                     <th>No.</th>
-                    <th>StudentID</th>
-                    <th>Full Name</th>
+                    <th>ID</th>
+                    <th>Student Name</th>
                     <th>Image</th>
                     <th>Present</th>
                     <th>Absent</th>
