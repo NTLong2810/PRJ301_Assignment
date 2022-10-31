@@ -32,7 +32,7 @@ public class TimeTableController extends HttpServlet{
         String raw_to = request.getParameter("to");
         java.sql.Date from = null;
         java.sql.Date to = null;
-        if(raw_from ==null || raw_from.length() ==0)
+        if(raw_from ==null || raw_from.length() ==0 ||raw_to==null || raw_to.length()==0)
         {
             Date today = new Date();
             int todayOfWeek = DateTimeHelper.getDayofWeek(today);

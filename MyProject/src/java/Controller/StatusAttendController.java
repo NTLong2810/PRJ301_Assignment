@@ -26,8 +26,6 @@ public class StatusAttendController extends HttpServlet{
         int subid = Integer.parseInt(req.getParameter("subid"));
         GroupDBContext groupDB = new GroupDBContext();
         Group group = groupDB.get(groupid, lid, subid);
-        ArrayList<Student> liststudent = group.getStudents();
-        ArrayList<Session> listses = group.getSessions();
         req.setAttribute("group", group);
         req.getRequestDispatcher("../view/lecturer/statusattend.jsp").forward(req, resp);
     }
