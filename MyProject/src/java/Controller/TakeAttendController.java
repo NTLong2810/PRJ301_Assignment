@@ -36,7 +36,7 @@ public class TakeAttendController extends HttpServlet{
         }
         SessionDBContext db = new SessionDBContext();
         db.update(ses);
-         resp.sendRedirect("takeatt?id="+ses.getId());
+         resp.sendRedirect("detail?id="+ses.getId());
     }
 
     @Override

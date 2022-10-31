@@ -60,7 +60,7 @@
                                </c:if>
                                name="present${a.student.id}" value="absent" /></td>
                     <td><input type="text" name="description${a.student.id}" value="${a.description}" /></td>
-                    <td>${a.record_time}</td>
+                    <td></td>
                 </tr>   
                     
                 </c:forEach>

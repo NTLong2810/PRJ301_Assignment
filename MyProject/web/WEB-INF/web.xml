@@ -12,6 +12,10 @@
         <servlet-name>StatusAttendController</servlet-name>
         <servlet-class>Controller.StatusAttendController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DetailController</servlet-name>
+        <servlet-class>Controller.SessionAttendController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>TimetableController</servlet-name>
         <url-pattern>/lecturer/timetable</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>StatusAttendController</servlet-name>
         <url-pattern>/lecturer/status</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DetailController</servlet-name>
+        <url-pattern>/lecturer/detail</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
