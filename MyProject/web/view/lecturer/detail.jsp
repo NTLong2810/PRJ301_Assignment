@@ -14,8 +14,8 @@
         <link rel="stylesheet" href="../css/DetailStyle.css"/>
     </head>
     <body>
-        <p style="font-size: 20px; color:blue">Detail Attendance For Session: ${requestScope.attlist[0].session.id}</p>
-       <p style="font-size: 15px"> AT: ${requestScope.attlist[0].session.date} </p>
+        <p style="font-size: 20px; color:blue">Take Attendance Sucessfully For Session: ${requestScope.attlist[0].session.id}</p>
+       <p style="font-size: 15px"> AT DATE: ${requestScope.attlist[0].session.date} </p>
             <table class="table">
                 <tr>
                     <th>No</th>
