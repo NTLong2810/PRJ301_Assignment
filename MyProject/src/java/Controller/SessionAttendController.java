@@ -30,7 +30,6 @@ public class SessionAttendController extends HttpServlet{
          int sesid = Integer.parseInt(req.getParameter("id"));
         AttendanceDBContext de = new AttendanceDBContext();
         ArrayList attlist = de.getAttendance(sesid);
-        LecturerDBContext lec = new LecturerDBContext();
         req.setAttribute("attlist", attlist);
          req.getRequestDispatcher("../view/lecturer/detail.jsp").forward(req, resp);     
     }
