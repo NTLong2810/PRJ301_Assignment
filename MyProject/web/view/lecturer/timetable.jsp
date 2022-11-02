@@ -16,6 +16,8 @@
         <link rel="stylesheet" href="../css/TimetableStyle.css"/>
     </head>
     <body>
+        <a href="http://localhost:9999/MyProject/home">Home</a> ||
+        <a href="http://localhost:9999/MyProject/logout">Logout</a>
          <div style="text-align: center">
              Lecturer: <input type="text" readonly="readonly" value="${requestScope.lecturer.name}"/>
 

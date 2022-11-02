@@ -1,18 +1,13 @@
-<%-- 
-    Document   : login
-    Created on : Nov 2, 2022, 11:09:44 AM
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Nov 2, 2022, 1:47:25 PM
     Author     : DELL
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-        <style>
-            #bg {
-  background-image: url('img/blue_abstract_background.jpg');
+*/
+#bg {
+  background-image: url('img/background.jpg');
   position: fixed;
   left: 0;
   top: 0;
@@ -101,20 +96,3 @@ form .btn {
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
   font-size: 17px;
 }
-        </style>
-    </head>
-    <body>
-        <div id="bg"></div>
-       <form action="login" method="POST">
-           <div class="form-field">
-               <input type="text" name="username" placeholder="Username"/> <br/>
-           </div>
-            <div class="form-field">
-           <input type="password" name="password" placeholder="Password"/> <br/>
-              </div>
-             <div class="form-field">
-                 <button class="btn" type="submit">Login</button>
-              </div>
-        </form>    
-    </body>
-</html>

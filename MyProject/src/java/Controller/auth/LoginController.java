@@ -31,7 +31,7 @@ public class LoginController extends HttpServlet {
         Account account = db.get(username, password);
         if(account == null)
         {
-            response.getWriter().println("login failed!");
+            response.sendRedirect("login");
         }
         else
         {
