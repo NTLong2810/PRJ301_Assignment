@@ -4,6 +4,7 @@
  */
 package Controller;
 
+import Controller.auth.BaseAuthenticationController;
 import dal.SessionDBContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -18,10 +19,9 @@ import model.Student;
  *
  * @author DELL
  */
-public class TakeAttendController extends HttpServlet{
-
+public class TakeAttendController extends BaseAuthenticationController{
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void processPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
          Session ses = new Session();
         ses.setId(Integer.parseInt(req.getParameter("sesid")));
         String[] stdids = req.getParameterValues("stdid");
@@ -40,13 +40,11 @@ public class TakeAttendController extends HttpServlet{
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void processGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
          int sesid = Integer.parseInt(req.getParameter("id"));
         SessionDBContext sesDB = new SessionDBContext();
         Session ses = sesDB.get(sesid);
         req.setAttribute("ses", ses);
         req.getRequestDispatcher("../view/lecturer/takeattend.jsp").forward(req, resp);
-    }
-    
-    
+    } 
 }

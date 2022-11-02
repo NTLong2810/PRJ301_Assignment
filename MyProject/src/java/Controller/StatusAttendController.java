@@ -4,6 +4,7 @@
  */
 package Controller;
 
+import Controller.auth.BaseAuthenticationController;
 import dal.GroupDBContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -19,7 +20,7 @@ import model.Student;
  *
  * @author DELL
  */
-public class StatusAttendController extends HttpServlet{
+public class StatusAttendController extends BaseAuthenticationController{
      protected void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
           int groupid = Integer.parseInt(req.getParameter("gid"));
         int lid = Integer.parseInt(req.getParameter("lid"));
@@ -31,12 +32,12 @@ public class StatusAttendController extends HttpServlet{
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void processPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         processRequest(req,resp);
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void processGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
          processRequest(req,resp);
        
     }

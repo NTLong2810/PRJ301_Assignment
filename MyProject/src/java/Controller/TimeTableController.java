@@ -4,6 +4,7 @@
  */
 package Controller;
 
+import Controller.auth.BaseAuthenticationController;
 import dal.LecturerDBContext;
 import dal.SessionDBContext;
 import dal.TimeSlotDBContext;
@@ -23,7 +24,7 @@ import util.DateTimeHelper;
  *
  * @author DELL
  */
-public class TimeTableController extends HttpServlet{
+public class TimeTableController extends BaseAuthenticationController{
 
      protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
@@ -67,13 +68,13 @@ public class TimeTableController extends HttpServlet{
         
     } 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void processPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         processRequest(req,resp);
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-         processRequest(req,resp);
+    protected void processGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+           processRequest(req,resp);
     }
     
     

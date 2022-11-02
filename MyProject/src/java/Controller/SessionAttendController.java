@@ -4,6 +4,7 @@
  */
 package Controller;
 
+import Controller.auth.BaseAuthenticationController;
 import dal.AttendanceDBContext;
 import dal.LecturerDBContext;
 import dal.SessionDBContext;
@@ -19,14 +20,14 @@ import model.Session;
  *
  * @author DELL
  */
-public class SessionAttendController extends HttpServlet{
+public class SessionAttendController extends BaseAuthenticationController{
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void processPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void processGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
          int sesid = Integer.parseInt(req.getParameter("id"));
         AttendanceDBContext de = new AttendanceDBContext();
         ArrayList attlist = de.getAttendance(sesid);
