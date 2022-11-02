@@ -23,11 +23,10 @@ public class AccountDBContext extends DBContext<Account> {
 
     public Account get(String username, String password) {
         try {
-            String sql = "SELECT a.username,a.displayname\n"
+            String sql = "SELECT a.username,a.displayname,a.id\n"
                     + "               ,r.rid,r.rname\n"
-                    + "               ,f.fid,f.fname,f.url,l.lid\n"
+                    + "               ,f.fid,f.fname,f.url\n"
                     + "               	FROM Account a \n"
-                    + "		      INNER JOIN Lecturer l ON a.lid=l.lid\n"
                     + "               LEFT JOIN Role_Account ra ON a.username = ra.username\n"
                     + "               LEFT JOIN [Role] r ON r.rid = ra.rid\n"
                     + "               LEFT JOIN Role_Feature rf ON rf.rid = r.rid\n"
@@ -45,6 +44,7 @@ public class AccountDBContext extends DBContext<Account> {
                     account = new Account();
                     account.setUsername(rs.getString("username"));
                     account.setDisplayname(rs.getString("displayname"));
+                    account.setId(rs.getInt("id"));
                 }
                 int rid = rs.getInt("rid");
                 if(rid!=0)
@@ -66,12 +66,6 @@ public class AccountDBContext extends DBContext<Account> {
                     f.setName(rs.getString("fname"));
                     f.setUrl(rs.getString("url"));
                     currentRole.getFeatures().add(f);
-                }
-                int lid = rs.getInt("lid");
-                if(lid!=0){
-                    Lecturer lec =  new Lecturer();
-                    lec.setId(rs.getInt("lid"));
-                    account.getLecturers().add(lec);
                 }
             }
             return account;

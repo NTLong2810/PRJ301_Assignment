@@ -100,9 +100,10 @@
            <div id="bg"></div>
         <div class="main">
             <div class="navbar">
-                <div class="logo"><a href="lecturer/timetable?lid=${sessionScope.account.displayname}">TimeTable</a></div>
+                <div class="logo"><a href="lecturer/timetable?lid=${sessionScope.account.id}">TimeTable</a></div>
          <c:if test="${sessionScope.account ne null}">
              <ul>
+             <li>Hello, Mr.${sessionScope.account.displayname}</li>
             <li><a href="logout">logout</a></li>
             </ul>
         </c:if>

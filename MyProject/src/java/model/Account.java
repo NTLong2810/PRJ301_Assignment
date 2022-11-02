@@ -14,17 +14,17 @@ public class Account {
    private String username;
     private String password;
     private String displayname;
-    private ArrayList<Lecturer> lecturers = new ArrayList<>();
+    private int id;
     private ArrayList<Role> roles = new ArrayList<>();
 
-    public ArrayList<Lecturer> getLecturers() {
-        return lecturers;
+    public int getId() {
+        return id;
     }
 
-    public void setLecturers(ArrayList<Lecturer> lecturers) {
-        this.lecturers = lecturers;
+    public void setId(int id) {
+        this.id = id;
     }
-
+    
     public ArrayList<Role> getRoles() {
         return roles;
     }
