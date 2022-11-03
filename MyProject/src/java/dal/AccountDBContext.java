@@ -44,7 +44,7 @@ public class AccountDBContext extends DBContext<Account> {
                     account = new Account();
                     account.setUsername(rs.getString("username"));
                     account.setDisplayname(rs.getString("displayname"));
-                    account.setId(rs.getInt("id"));
+                    account.setId(rs.getString("id"));
                 }
                 int rid = rs.getInt("rid");
                 if(rid!=0)

@@ -2,23 +2,22 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Controller;
+package Controller.student;
 
 import Controller.auth.BaseAuthenticationController;
-import Controller.auth.BaseRoleController;
 import dal.LecturerDBContext;
 import dal.SessionDBContext;
+import dal.StudentDBContext;
 import dal.TimeSlotDBContext;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
-import model.Account;
 import model.Lecturer;
 import model.Session;
+import model.Student;
 import model.TimeSlot;
 import util.DateTimeHelper;
 
@@ -26,11 +25,11 @@ import util.DateTimeHelper;
  *
  * @author DELL
  */
-public class TimeTableController extends BaseRoleController{
+public class TimeTableStudentController extends BaseAuthenticationController{
 
-     protected void processRequest(HttpServletRequest request, HttpServletResponse response, Account account)
+     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        int lid = Integer.parseInt(account.getId());
+        String stdid = request.getParameter("stdid");
         String raw_from = request.getParameter("from");
         String raw_to = request.getParameter("to");
         java.sql.Date from = null;
@@ -59,24 +58,24 @@ public class TimeTableController extends BaseRoleController{
         request.setAttribute("slots", slots);
         
         SessionDBContext sesDB = new SessionDBContext();
-        ArrayList<Session> sessions = sesDB.filter(lid, from, to);
+        ArrayList<Session> sessions = sesDB.getListSessionofStudent(stdid, from, to);
         request.setAttribute("sessions", sessions);
         
-        LecturerDBContext lecDB = new LecturerDBContext();
-        Lecturer lecturer = lecDB.get(lid);
-        request.setAttribute("lecturer", lecturer);
+        StudentDBContext stuDB = new StudentDBContext();
+        Student student = stuDB.get(stdid);
+        request.setAttribute("student", student);
         
-        request.getRequestDispatcher("../view/lecturer/timetable.jsp").forward(request, response);
+        request.getRequestDispatcher("../view/student/timetablestu.jsp").forward(request, response);
         
     } 
     @Override
-    protected void processPost(HttpServletRequest req, HttpServletResponse resp, Account account) throws ServletException, IOException {
-        processRequest(req,resp,account);
+    protected void processPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        processRequest(req,resp);
     }
 
     @Override
-    protected void processGet(HttpServletRequest req, HttpServletResponse resp, Account account) throws ServletException, IOException {
-           processRequest(req,resp,account);
+    protected void processGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+           processRequest(req,resp);
     }
     
     

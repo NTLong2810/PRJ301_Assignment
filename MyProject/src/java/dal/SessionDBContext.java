@@ -4,11 +4,12 @@
  */
 package dal;
 
-
+import java.text.SimpleDateFormat;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -92,6 +93,92 @@ public ArrayList<Session> filter(int lid, Date from, Date to) {
         }
         return sessions;
     }
+
+public ArrayList<Session> getListSessionofStudent(String stdid, Date from, Date to) {
+        ArrayList<Session> sessionstu = new ArrayList<>();
+        try {
+            String sql = "Select s.sesid,s.date,s.attanded\n"
+                    + "   ,g.gid,g.gname,g.subid\n"
+                    + "   ,st.stdid,st.stdname\n"
+                    + "   ,l.lid,l.lname\n"
+                    + "   ,r.rid,r.rname,sub.subname\n"
+                    + "   ,t.tid,t.description \n"
+                    + "   ,a.stdid,a.present\n"
+                    + "    FROM Session s\n"
+                    + "    INNER JOIN [Group] g ON s.gid = g.gid\n"
+                    + "    INNER JOIN Student_Group gs ON g.gid= gs.gid\n"
+                    + "   INNER JOIN Student st ON gs.stdid = st.stdid\n"
+                    + "   INNER JOIN Subject sub ON sub.subid=g.subid\n"
+                    + "   INNER JOIN Lecturer l ON s.lid = l.lid\n"
+                    + "   INNER JOIN Room r ON s.rid = r.rid\n"
+                    + "   INNER JOIN TimeSlot t ON s.tid = t.tid\n"
+                    + "   LEFT JOIN Attendance a ON s.sesid= a.sesid AND a.stdid = st.stdid\n"
+                    + "   WHERE st.stdid = ? AND s.date >= ? AND s.date<= ?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1,stdid);
+            stm.setDate(2, from);
+            stm.setDate(3, to);
+            ResultSet rs = stm.executeQuery();
+            while(rs.next())
+            {
+                Session session = new Session();
+                Group g = new Group();
+                Subject c = new Subject();
+                Student s = new Student();
+                ArrayList<Student> students = new ArrayList<>();
+                Lecturer l = new Lecturer();
+                Room r = new Room();
+                TimeSlot t = new TimeSlot();
+                Attendance att = new Attendance();
+                session.setId(rs.getInt("sesid"));
+                session.setDate(rs.getDate("date"));
+                Boolean attended = rs.getBoolean("attanded");
+                if (rs.wasNull()) {
+                    attended = null;
+                }
+                session.setAttended(attended);
+
+                s.setId(rs.getString("stdid"));
+                s.setName(rs.getString("stdname"));
+                students.add(s);
+                g.setStudents(students);
+
+                l.setId(rs.getInt("lid"));
+                l.setName(rs.getString("lname"));
+                session.setLecturer(l);
+
+                c.setId(rs.getInt("subid"));
+                c.setName(rs.getString("subname"));
+                g.setSubject(c);
+
+                g.setId(rs.getInt("gid"));
+                g.setName(rs.getString("gname"));
+                session.setGroup(g);
+
+                r.setId(rs.getInt("rid"));
+                r.setName(rs.getString("rname"));
+                session.setRoom(r);
+
+                t.setId(rs.getInt("tid"));
+                t.setDescription(rs.getString("description"));
+                session.setTimeslot(t);
+                
+                att.setStudent(s);
+                Boolean present = rs.getBoolean("present");
+                if (rs.wasNull()) {
+                    present = null;
+                }
+                att.setPresent(present);
+                session.getAttendances().add(att);
+                sessionstu.add(session);
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SessionDBContext.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        return sessionstu;
+    }
     @Override
     public void insert(Session model) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -128,7 +215,7 @@ public ArrayList<Session> filter(int lid, Date from, Date to) {
                         + "           ,GETDATE())";
                 PreparedStatement stm_insert = connection.prepareStatement(sql);
                 stm_insert.setInt(1, model.getId());
-                stm_insert.setInt(2, att.getStudent().getId());
+                stm_insert.setString(2, att.getStudent().getId());
                 stm_insert.setBoolean(3, att.isPresent());
                 stm_insert.setString(4, att.getDescription());
                 stm_insert.executeUpdate();
@@ -215,7 +302,7 @@ public ArrayList<Session> filter(int lid, Date from, Date to) {
                 }
                 //read student
                 Student s = new Student();
-                s.setId(rs.getInt("stdid"));
+                s.setId(rs.getString("stdid"));
                 s.setName(rs.getString("stdname"));
                 //read attandance
                 Attendance a = new Attendance();
@@ -293,5 +380,4 @@ public ArrayList<Session> filter(int lid, Date from, Date to) {
         }
         return sessions;
     }
-
 }

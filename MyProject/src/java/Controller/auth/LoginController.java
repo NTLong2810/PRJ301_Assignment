@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import model.Account;
+import model.Role;
 
 /**
  *
@@ -36,7 +37,16 @@ public class LoginController extends HttpServlet {
         else
         {
             request.getSession().setAttribute("account", account);
-            response.sendRedirect("home");
+           Role role = account.getRoles().get(0);
+            if (role != null) {
+                if (role.getId() == 2) {
+                    request.getRequestDispatcher("/view/student/home.jsp").forward(request, response);
+                } else {
+                    request.getRequestDispatcher("/view/lecturer/home.jsp").forward(request, response);
+                }
+            } else {
+                response.getWriter().println("This account doesn't have any role");
+            }
         }
     }
 }

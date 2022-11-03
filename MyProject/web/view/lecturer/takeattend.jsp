@@ -6,6 +6,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:useBean id="helper" class="util.DateTimeHelper"/>
 <!DOCTYPE html>
 <html>
     <head>
@@ -49,6 +50,7 @@
                     </td>
                     <td>${a.student.name}</td>
                     <td><img src="../img/depositphotos_64486573-stock-photo-people.jpg" alt="alt" style="height:146px;width:111px;border-width:0px;"/></td>
+                    <c:if test="${(helper.getDaystoCurrent(a.session.date) >0) and (helper.getDaystoCurrent(a.session.date) <2)}">
                     <td><input type="radio"
                                <c:if test="${a.present}">
                                checked="checked"
@@ -59,8 +61,22 @@
                                checked="checked"
                                </c:if>
                                name="present${a.student.id}" value="absent" /></td>
-                    <td><input type="text" name="description${a.student.id}" value="${a.description}" /></td>
-                    <td></td>
+                      <td><input type="text" name="description${a.student.id}" value="${a.description}" /></td>
+                       <td>${a.record_time}</td>
+                    </c:if>
+                    <c:if test="${helper.getDaystoCurrent(a.session.date) >=2}">
+                    <td style="color:green">
+                               <c:if test="${a.present}">
+                               Present
+                               </c:if></td>
+                    <td style="color:red">
+                               <c:if test="${!a.present}">
+                               Absent
+                               </c:if>
+                    </td>
+                    <td>${a.description}</td>
+                     <td>${a.record_time}</td>
+                    </c:if>
                 </tr>   
                     
                 </c:forEach>

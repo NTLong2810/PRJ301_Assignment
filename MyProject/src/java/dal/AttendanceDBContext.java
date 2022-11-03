@@ -34,7 +34,7 @@ public class AttendanceDBContext extends DBContext<Attendance>{
                 att.setPresent(rs.getBoolean("present"));
                 att.setRecord_time(rs.getTimestamp("record_time"));
                 Student stu = new Student();
-                stu.setId(rs.getInt("stdid"));
+                stu.setId(rs.getString("stdid"));
                 stu.setName(rs.getString("stdname"));
                 att.setStudent(stu);
                 Session se = new Session();

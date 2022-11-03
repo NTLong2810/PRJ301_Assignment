@@ -5,6 +5,7 @@
 package Controller;
 
 import Controller.auth.BaseAuthenticationController;
+import Controller.auth.BaseRoleController;
 import dal.GroupDBContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -12,6 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import model.Account;
 import model.Group;
 import model.Session;
 import model.Student;
@@ -20,8 +22,8 @@ import model.Student;
  *
  * @author DELL
  */
-public class StatusAttendController extends BaseAuthenticationController{
-     protected void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+public class StatusAttendController extends BaseRoleController{
+     protected void processRequest(HttpServletRequest req, HttpServletResponse resp, Account account) throws ServletException, IOException {
           int groupid = Integer.parseInt(req.getParameter("gid"));
         int lid = Integer.parseInt(req.getParameter("lid"));
         int subid = Integer.parseInt(req.getParameter("subid"));
@@ -32,13 +34,13 @@ public class StatusAttendController extends BaseAuthenticationController{
     }
 
     @Override
-    protected void processPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        processRequest(req,resp);
+    protected void processPost(HttpServletRequest req, HttpServletResponse resp, Account account) throws ServletException, IOException {
+        processRequest(req,resp,account);
     }
 
     @Override
-    protected void processGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-         processRequest(req,resp);
+    protected void processGet(HttpServletRequest req, HttpServletResponse resp, Account account) throws ServletException, IOException {
+         processRequest(req,resp,account);
        
     }
     

@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Lecturer;
 import model.Student;
 
 /**
@@ -34,7 +35,7 @@ public class StudentDBContext extends DBContext<Student>{
             ResultSet rs = stm.executeQuery();
             while(rs.next()){
                 Student student = new Student();
-                student.setId(rs.getInt("stdid"));
+                student.setId(rs.getString("stdid"));
                 student.setName(rs.getString("stdname"));
                 students.add(student);
             }
@@ -45,7 +46,24 @@ public class StudentDBContext extends DBContext<Student>{
         }
         return null;
     }
-
+     public Student get(String id) {
+        try {
+            String sql = "SELECT stdid,stdname FROM Student WHERE stdid = ?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, id);
+            ResultSet rs = stm.executeQuery();
+            if(rs.next())
+            {
+                Student stu = new Student();
+                stu.setId(rs.getString("stdid"));
+                stu.setName(rs.getString("stdname"));
+                return stu;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(LecturerDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
     @Override
     public void insert(Student model) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -75,7 +93,7 @@ public class StudentDBContext extends DBContext<Student>{
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
                 Student s = new Student();
-                int sid = rs.getInt("stdid");
+                String sid = rs.getString("stdid");
                 String sname = rs.getString("stdname");
                 s.setId(sid);
                 s.setName(sname);

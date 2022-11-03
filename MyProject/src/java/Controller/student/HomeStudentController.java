@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Controller;
+package Controller.student;
 
+import Controller.*;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -14,10 +15,10 @@ import java.io.IOException;
  *
  * @author DELL
  */
-public class HomeController extends HttpServlet {
+public class HomeStudentController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-       request.getRequestDispatcher("view/lecturer/home.jsp").forward(request, response);
+       request.getRequestDispatcher("view/student/home.jsp").forward(request, response);
     } 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

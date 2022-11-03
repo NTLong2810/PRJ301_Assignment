@@ -28,6 +28,14 @@
         <servlet-name>HomeController</servlet-name>
         <servlet-class>Controller.HomeController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>TimetableStudent</servlet-name>
+        <servlet-class>Controller.student.TimeTableStudentController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HomeStuController</servlet-name>
+        <servlet-class>Controller.student.HomeStudentController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>TimetableController</servlet-name>
         <url-pattern>/lecturer/timetable</url-pattern>
@@ -55,6 +63,14 @@
     <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
         <url-pattern>/home</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TimetableStudent</servlet-name>
+        <url-pattern>/student/timetablestu</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HomeStuController</servlet-name>
+        <url-pattern>/homestu</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
