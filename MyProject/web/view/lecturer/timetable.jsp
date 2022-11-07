@@ -61,7 +61,7 @@
                                              <a> <br>(<font color="Green">Attended</font>) </a>
                                              </c:if>
                                              <c:if test="${!ses.attended}">
-                                             <a> <br>(<font color="Red">Not Yet</font>) </a>
+                                             <a> <br><font color="black">(Not Yet)</font> </a>
                                              </c:if>
 
                                      </c:if>
