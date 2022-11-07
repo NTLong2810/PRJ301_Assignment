@@ -100,7 +100,7 @@
            <div id="bg"></div>
         <div class="main">
             <div class="navbar">
-                <div class="logo"><a href="student/timetablestu?stdid=${sessionScope.account.id}">TimeTable</a></div>
+                <div class="logo"><a href="student/timetablestu">TimeTable</a></div>
          <c:if test="${sessionScope.account ne null}">
              <ul>
              <li>Hello, Mr.${sessionScope.account.displayname}</li>

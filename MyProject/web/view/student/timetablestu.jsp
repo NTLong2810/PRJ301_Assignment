@@ -54,11 +54,23 @@
                              <td>
                                  <c:forEach items="${requestScope.sessions}" var="ses">
                                      <c:if test="${helper.compare(ses.date,d) eq 0 and (ses.timeslot.id eq slot.id)}">
-                                               ${ses.group.name} <br>
+                                         <a href="status?stdid=${requestScope.student.id}&gid=${ses.group.id}">${ses.group.name} <br>
                                              -${ses.group.subject.name} <br>
-                                             at  ${ses.room.name}<br>
-                                     </c:if>
+                                             at  ${ses.room.name}<br></a> 
+                                   
+                                     <c:if test="${ses.attended}">
+                                                        <c:if test="${ses.attendances.get(0).present}">
 
+                                                            (<font color="green">Present</font>)
+                                                            </c:if>
+                                                            <c:if test="${!ses.attendances.get(0).present}">
+                                                            (<font color="red">Absent</font>)
+                                                            </c:if>
+                                                        </c:if>
+                                                        <c:if test="${!ses.attended}">
+                                                        <font color="black">(Not yet)</font>
+                                                        </c:if> 
+                                       </c:if>                   
                                  </c:forEach>
                              </td>
                          </c:forEach>

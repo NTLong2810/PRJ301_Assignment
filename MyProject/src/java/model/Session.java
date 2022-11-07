@@ -93,5 +93,10 @@ public class Session {
     public void setAttendances(ArrayList<Attendance> attendances) {
         this.attendances = attendances;
     }
+
+    @Override
+    public String toString() {
+        return "Session{" + "id=" + id + ", lecturer=" + lecturer + ", room=" + room + ", timeslot=" + timeslot + ", date=" + date + ", group=" + group + ", index=" + index + ", attended=" + attended + ", attendances=" + attendances + '}';
+    }
     
 }

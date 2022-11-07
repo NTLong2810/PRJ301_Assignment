@@ -50,10 +50,10 @@
                                                ${ses.group.name} <br>
                                              -${ses.group.subject.name} <br>
                                              at  ${ses.room.name}<br>
-                                                   <c:if test="${(helper.getDaystoCurrent(ses.date) >0) and (helper.getDaystoCurrent(ses.date) <2)}"> 
+                                                   <c:if test="${(helper.getDaystoCurrent(ses.date) >0) and (helper.getDaystoCurrent(ses.date) <1)}"> 
                                              <a href="takeatt?id=${ses.id}"> Take Attendance</a> ||
                                                    </c:if>
-                                             <c:if test="${helper.getDaystoCurrent(ses.date) >=2}"> 
+                                             <c:if test="${helper.getDaystoCurrent(ses.date) >=1}"> 
                                              <a href="takeatt?id=${ses.id}"> Detail Attendance</a> ||
                                                    </c:if>
                                                <a href="status?gid=${ses.group.id}&lid=${ses.lecturer.id}&subid=${ses.group.subject.id}">Status</a>
